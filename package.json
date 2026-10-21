@@ -1,0 +1,28 @@
+{
+  "name": "larkspur-bike-park",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "preview:local": "npm run build && python3 -m http.server 4173 --bind 127.0.0.1 --directory out",
+    "build": "next build",
+    "postbuild": "node scripts/clean-static-output.mjs && node scripts/write-release-manifest.mjs",
+    "check": "tsc --noEmit",
+    "release:check": "npm run check && npm run build && node scripts/verify-release.mjs",
+    "verify:production": "node scripts/verify-release.mjs --production"
+  },
+  "dependencies": {
+    "next": "15.5.28",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.0",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "typescript": "5.8.3"
+  },
+  "overrides": {
+    "postcss": "8.5.31"
+  }
+}
