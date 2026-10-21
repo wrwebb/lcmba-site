@@ -1,11 +1,12 @@
 import type { Content, Sponsor } from '@/lib/content';
+import { publicAsset } from '@/lib/public-asset';
 
 function Logo({ s, className }: { s: Sponsor; className: string }) {
   return (
     <span className={`${className} ${s.logoBg === 'dark' ? 'is-dark' : ''}`}>
       {s.logo ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={s.logo} alt={s.logoAlt} loading="lazy" />
+        <img src={publicAsset(s.logo)} alt={s.logoAlt} loading="lazy" />
       ) : (
         <span className="sp-logo-name">{s.name}</span>
       )}

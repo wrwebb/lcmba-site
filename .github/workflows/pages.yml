@@ -24,11 +24,14 @@ jobs:
           node-version: 20
           cache: npm
       - uses: actions/configure-pages@v5
+        id: pages
         with:
           static_site_generator: next
       - run: npm ci
       - run: npm run check
       - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out

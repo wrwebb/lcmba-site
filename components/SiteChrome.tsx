@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Content } from '@/lib/content';
+import { publicAsset } from '@/lib/public-asset';
 
 export function SiteHeader({ current, showElection = true, showSponsors = false, showLogo = false, showBikePark = false, ctaLabel = 'Support LCMBA' }: { current?: 'home' | 'bike-park' | 'support'; showElection?: boolean; showSponsors?: boolean; showLogo?: boolean; showBikePark?: boolean; ctaLabel?: string }) {
   return (
@@ -10,7 +11,7 @@ export function SiteHeader({ current, showElection = true, showSponsors = false,
         <Link href="/" className="logo">
           {showLogo && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src="/logo-light.png" alt="" className="logo-img" width={540} height={224} />
+            <img src={publicAsset('/logo-light.png')} alt="" className="logo-img" width={540} height={224} />
           )}
           <span className="logo-top">
             Larkspur Corte Madera<span className="logo-sub">Bicycle Alliance</span>
@@ -58,5 +59,5 @@ export function SiteFooter({ site }: { site: Content }) {
 export function Photo({ src, alt, className, lazy = true }: { src: string; alt: string; className?: string; lazy?: boolean }) {
   if (!src) return null;
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt={alt} className={className} loading={lazy ? 'lazy' : undefined} />;
+  return <img src={publicAsset(src)} alt={alt} className={className} loading={lazy ? 'lazy' : undefined} />;
 }

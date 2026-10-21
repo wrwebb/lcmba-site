@@ -1,4 +1,5 @@
 import type { Candidate, Content } from '@/lib/content';
+import { publicAsset } from '@/lib/public-asset';
 
 function ResponseText({ text }: { text: string }) {
   const blocks = text.trim().split(/\n\s*\n/).filter(Boolean);
@@ -22,7 +23,7 @@ export function EndorsementsSection({ c, candidates }: { c: Content; candidates:
       <div className="wrap">
         {c.endorse_banner && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={c.endorse_banner} alt={c.endorse_banner_alt} className="photo banner" style={{ marginBottom: 36 }} loading="lazy" />
+          <img src={publicAsset(c.endorse_banner)} alt={c.endorse_banner_alt} className="photo banner" style={{ marginBottom: 36 }} loading="lazy" />
         )}
         <div className="eyebrow">{c.endorse_eyebrow}</div>
         <h2>{c.endorse_title}</h2>
@@ -35,7 +36,7 @@ export function EndorsementsSection({ c, candidates }: { c: Content; candidates:
                 <div className="en-photo-frame">
                   {k.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={k.photo} alt={k.photoAlt} className={`en-photo en-photo-cand-${k.n}`} loading="lazy" />
+                    <img src={publicAsset(k.photo)} alt={k.photoAlt} className={`en-photo en-photo-cand-${k.n}`} loading="lazy" />
                   ) : (
                     <div className="en-photo en-photo-empty" aria-hidden="true">{k.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</div>
                   )}

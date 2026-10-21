@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader, Photo } from '@/components/SiteChrome';
 import { SponsorsSection } from '@/components/Sponsors';
 import { EndorsementsSection } from '@/components/Endorsements';
 import { candidatesFrom, membersFrom, sponsorsFrom } from '@/lib/content';
+import { publicAsset } from '@/lib/public-asset';
 
 export default async function HomePage() {
   const { home: c, site, sponsors: sp, endorsements: en, members: mb, support: su } = await loadContent(['home', 'site', 'sponsors', 'endorsements', 'members', 'support']);
@@ -26,7 +27,7 @@ export default async function HomePage() {
       <section
         id="top"
         className="hero-photo"
-        style={c.hero_photo ? { backgroundImage: `url(${c.hero_photo})` } : undefined}
+        style={c.hero_photo ? { backgroundImage: `url(${publicAsset(c.hero_photo)})` } : undefined}
       >
         <div className="wrap hero-photo-inner">
           {c.hero_eyebrow && <div className="eyebrow">{c.hero_eyebrow}</div>}
